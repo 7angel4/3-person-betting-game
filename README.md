@@ -32,12 +32,12 @@ This file could be used to generate numerical approximations to $P(\text{Loser} 
 
 <h2>Running the program</h2>
 
-a) From Jupyter Notebook: 
+a) From <b>Jupyter Notebook</b>: 
 
 Simply click `Kernel > Restart & Run All` to run all cells.<br>
 Then append any necessary function calls to attain the desired hitting probability.
 
-b) From Terminal:
+b) From <b>Terminal</b>:
 
 1. Run `jupyter nbconvert --execute LoserAnalysis --to python`.<br>
 This converts the notebook `LoserAnalysis.ipynb` to a Python file, `LoserAnalysis.py`.
