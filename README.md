@@ -2,11 +2,11 @@
 
 <h2>Game description</h2>
 
-A betting game involves 3 players, that start the game with amounts of money $x, $y, $z (all > 0) respectively. At each round $n \in \mathbb{N}$ of the game, one player (the <i>giver</i>) is chosen uniformly at random to give some money to one of the other players (the <i>receiver</i>) chosen uniformly at random (independent of previous rounds). If these two chosen players had $V and $W at the beginning of the round, then the giver must give the receiver $ $\min [V, W]$, and the round ends.
+A betting game involves 3 players, that start the game with amounts of money $x, $y, $z (all > 0) respectively. At each round $n \in \mathbb{N}$ of the game, one player (the <i>giver</i>) is chosen uniformly at random to give some money to one of the other players (the <i>receiver</i>) chosen uniformly at random (independent of previous rounds). If these two chosen players had $V and $W at the beginning of the round, then the giver must give the receiver $ $\min (V, W)$, and the round ends.
 
 The first player to reach $0 in this game is called the <i>loser</i>. After a loser has been determined the remaining two players continue until one of those two players has all the money. The player with all of the money at the end is called the <i>winner</i>.
 
-Let the amounts of money at time $n$ (i.e. after $n$ rounds) of the 3 players be $X_n, Y_n, Z_n$ respectively (so $X_0 = x, Y_0 = y, Z_0 = z$). Let $T_1 = \inf {n \geq 1: \min [X_n, Y_n, Z_n] = 0}$ and $T_2 = \inf \{n \geq 1: \max [X_n, Y_n, Z_n] = x+y+z\}$.
+Let the amounts of money at time $n$ (i.e. after $n$ rounds) of the 3 players be $X_n, Y_n, Z_n$ respectively (so $X_0 = x, Y_0 = y, Z_0 = z$). Let $T_1 = \inf {n \geq 1: \min (X_n, Y_n, Z_n) = 0}$ and $T_2 = \inf [n \geq 1: \max (X_n, Y_n, Z_n) = x+y+z]$.
 
 
 <h2>Goal</h2>
