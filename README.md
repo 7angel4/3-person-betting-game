@@ -2,7 +2,7 @@
 
 <h2>Game description</h2>
 
-A betting game involves 3 players, that start the game with amounts of money $\$x, \$y, \$z$ (all > 0) respectively. At each round $n \in \mathbb{N}$ of the game, one player (the <i>giver</i>) is chosen uniformly at random to give some money to one of the other players (the <i>receiver</i>) chosen uniformly at random (independent of previous rounds). If these two chosen players had $\$V$ and $\$W$ at the beginning of the round, then the giver must give the receiver $\min\{\$V, \$W\}$, and the round ends.
+A betting game involves 3 players, that start the game with amounts of money $\$x, \$y, \$z$ (all > 0) respectively. At each round $n \in \mathbb{N}$ of the game, one player (the <i>giver</i>) is chosen uniformly at random to give some money to one of the other players (the <i>receiver</i>) chosen uniformly at random (independent of previous rounds). If these two chosen players had $\$V$ and $\$W$ at the beginning of the round, then the giver must give the receiver $\min \{\$V, \$W\}$, and the round ends.
 
 The first player to reach $\$0$ in this game is called the <i>loser</i>. After a loser has been determined the remaining two players continue until one of those two players has all the money. The player with all of the money at the end is called the <i>winner</i>.
 
@@ -25,6 +25,10 @@ Thus, this Python program serves to find the exact probability (as a fraction) t
 
 `BettingGameSimulation.ipynb`: An additional notebook featuring the `simGame` function, which simulates the game for a specified number of times, and outputs a summary of the game statistics.<br>
 This file could be used to generate numerical approximations to $P(\text{Loser} = \text{Player 1})$, and as a sanity check for the exact solutions generated in `LoserAnalysis.ipynb`.
+
+`578Equations.txt`: Sample text file illustrating what is created by the `exportEqns` method in the `LoserAnalysis` class.<br>
+
+`Player1LoseProbs_1to5.csv`: Sample CSV file illustrating what is created by the `exportStateProbs` function.
 
 <h2>Running the program</h2>
 
