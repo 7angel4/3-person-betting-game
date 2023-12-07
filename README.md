@@ -31,9 +31,18 @@ However, finding the probability that a given player is the loser is much more d
 
 This Python program does exactly this -- it finds the exact probability (as a fraction) that Player 1 is the loser of the game, for any initial state $(x, y, z)$.
 
+
 <h2>Repo structure<h2>
 
-<code>.<br>
+The parent directory contains files which hold the main logic:
+* performing first-step analysis
+* simulating the game
+* visualising the hitting probabilities
+
+The child directories, corresponding to each game, contains the logic specific to that game, and any sample results or visualisations.
+
+
+<pre>.<br>
 |-- loser-analysis.ipynb<br>
 |-- simulation.ipynb<br>
 |-- visualiser.ipynb<br>
@@ -60,9 +69,10 @@ This Python program does exactly this -- it finds the exact probability (as a fr
 |<br>
 |-- game2_three_players<br>
 |   |-- ...<br>
-</code>
+</pre>
 
 ... `./game2_three_players` follow the same structure as `game1_two_players`.
+
 
 <h2>Programs</h2>
 
@@ -71,10 +81,11 @@ The main `LoserAnalysis` class represents the first-step analysis, given an init
 
 | Function/method | Functionality | Demo/sample results | Notes |
 | --- | --- | --- | --- |
-| `getHittingProb` (`LoserAnalysis`) | Calculate the exact $L_{(x,y,z)}$ in fraction form | `demo_probs_1-10.csv` | Also allows to approximate $L_{(x,y,z)}$, using memoisation + enumeration of all possible games up to a fixed number of rounds (faster method) |
-`getEquations`, `exportEqns` (`LoserAnalysis`) | Generate and export the $L_{(x,y,z)}$ equations | `demo_(5,7,8)_equations.txt` |
+| `getHittingProb` (`LoserAnalysis`) | Calculate the exact $L_{(x,y,z)}$ in fraction form | `game*_demo_probs_1-10.csv` | Also allows to approximate $L_{(x,y,z)}$, using memoisation + enumeration of all possible games up to a fixed number of rounds (faster method) |
+`getEquations`, `exportEqns` (`LoserAnalysis`) | Generate and export the $L_{(x,y,z)}$ equations | `game*_demo_(5,7,8)_equations.txt` |
 | `exportStateProbs` | Generate and export the $L_{(x,y,z)}$'s from all initial states within a certain range | `game*_exact_hitting_probs.csv` | CSV with format: (Initial state, $L_{(x,y,z)}$) |
-
+| `findBetterGiving1` | Finds the initial states where player 1 is better off giving away $1, using approximate $L_{(x,y,z)}$'s | <ul><li>`game1_better_giving_1_memo_1-100.csv`</li><li>`game1_better_giving_1_to_another_memo_1-100.csv`</li></ul> | Has the option to find when player 1 is better off giving away $1 **to another player** |
+| `stricterFilter` | Ditto, but using exact $L_{(x,y,z)}$'s or more accurate approximations | <ul><li>`game1_better_giving_1_stricter_1-100.csv`</li><li>`game1_better_giving_1_to_another_stricter_1-100.csv`</li></ul>  | Ditto |
 
 `simulation.ipynb`:
 Provides numerical approximation. Used as a sanity check of the first-step analyses' results.
