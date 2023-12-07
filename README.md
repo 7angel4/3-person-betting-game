@@ -2,29 +2,94 @@
 
 <h2>Game description</h2>
 
-A betting game involves 3 players, that start the game with amounts of money $x, $y, $z (all > 0) respectively. At each round $n \in \mathbb{N}$ of the game, one player (the <i>giver</i>) is chosen uniformly at random to give some money to one of the other players (the <i>receiver</i>) chosen uniformly at random (independent of previous rounds). If these two chosen players had $V and $W at the beginning of the round, then the giver must give the receiver $ $\min (V, W)$, and the round ends.
+A betting game involves 3 players, that start the game with amounts of money $x, $y, $z (all > 0) respectively. 
 
-The first player to reach $0 in this game is called the <i>loser</i>. After a loser has been determined the remaining two players continue until one of those two players has all the money. The player with all of the money at the end is called the <i>winner</i>.
+Let the fortunes at time $n$ (i.e. after $n$ rounds) of the 3 players be $X_n, Y_n, Z_n$ respectively (so $X_0 = x, Y_0 = y, Z_0 = z$), and model this as a Markov chain.
 
-Let the amounts of money at time $n$ (i.e. after $n$ rounds) of the 3 players be $X_n, Y_n, Z_n$ respectively (so $X_0 = x, Y_0 = y, Z_0 = z$). Let $T_1 = \inf {n \geq 1: \min (X_n, Y_n, Z_n) = 0}$ and $T_2 = \inf [n \geq 1: \max (X_n, Y_n, Z_n) = x+y+z]$.
+At each round of the game:
+
+* **Game 1**: One player (the <i>giver</i>) is chosen uniformly at random to give some money to one of the other players (the <i>receiver</i>) chosen uniformly at random (independent of previous rounds).<br> 
+If these two chosen players had $V and $W at the beginning of the round, then the giver must give the receiver $ $\min (V, W)$.
+* **Game 2**: one player is chosen uniformly at random as the receiver. All other players give $ $\min (X, Y, Z)$ to the receiver.
+
+And the round ends.
+
+The first player to reach $0 in this game is called the <i>loser</i>. 
+* Game 2: If two players are eliminated at the same time, then we toss a fair coin to determine who is the loser.
+
+After a loser has been determined the remaining two players continue until one of those two players has all the money. The player with all of the money at the end is called the <i>winner</i>.
+
+Given initial state $(x, y, z)$, denote: 
+* $L_{(x,y,z)}: probability that player 1 loses
+* W_{(x,y,z)}: probability that player 1 wins.
+
+<h2>Problem</h2>
+
+Finding the probability that a given player wins is simple. For example, the probability that Player 1 wins is just $\frac {x} {x+y+z}$.
+
+However, finding the probability that a given player is the loser is much more difficult. The first-step analysis could involve many more intermediate states and generate many equations, making the analysis intractable to calculate by hand.
+
+This Python program does exactly this -- it finds the exact probability (as a fraction) that Player 1 is the loser of the game, for any initial state $(x, y, z)$.
+
+<h2>Repo structure<h2>
+
+.
+|-- loser-analysis.ipynb
+|-- simulation.ipynb
+|-- visualiser.ipynb
+|-- game1_two_players
+|   |-- game1_global.ipynb
+|   |-- game1_demo.ipynb
+|   |-- game1_loser_analysis.ipynb
+|   |-- game1_hitting_probs_generator.ipynb
+|   |-- game1_better_giving_1.ipynb
+|   |-- game1_memoisation.ipynb
+|   |-- game1_visualisation.ipynb
+|   |-- data
+|   |   |-- game1_demo_(5,7,8)_equations.txt
+|   |   |-- game1_demo_probs_1-10.csv
+|   |   |-- game1_exact_hitting_probs.csv
+|   |   |-- game1_float_hitting_probs.csv
+|   |   |-- game1_better_giving_1_stricter_1-100.csv
+|   |   |-- ...
+|   |
+|   |-- visualisation
+|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX).png
+|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX_memoised).png
+|   |   |-- game1_fixed_sum_N=2000_t=30.png
+|
+|-- game2_three_players
+|   |-- ...
+
+... `./game2_three_players` follow the same structure as `game1_two_players`
+
+<h2>Programs</h2>
+
+`loser_analysis.ipynb`:
+The main `LoserAnalysis` class represents the first-step analysis, given an initial state.
+
+| Function/method | Functionality | Demo/sample results | Notes |
+| --- | --- | --- | --- |
+| `getHittingProb` (`LoserAnalysis`) | Calculate the exact $L_{(x,y,z)}$ in fraction form | `demo_probs_1-10.csv` | Also allows to approximate $L_{(x,y,z)}$, using memoisation + enumeration of all possible games up to a fixed number of rounds (faster method) |
+`getEquations`, `exportEqns` (`LoserAnalysis`) | Generate and export the $L_{(x,y,z)}$ equations | `demo_(5,7,8)_equations.txt` |
+| `exportStateProbs` | Generate and export the $L_{(x,y,z)}$'s from all initial states within a certain range | `game*_exact_hitting_probs.csv` | CSV with format: (Initial state, $L_{(x,y,z)}$) |
 
 
-<h2>Goal</h2>
+`simulation.ipynb`:
+Provides numerical approximation. Used as a sanity check of the first-step analyses' results.
 
-Finding the probability that a given player is the winner is simple. For example, the probability that Player 1 wins is just $\frac {x} {x+y+z}$.
+Main functions:
+* `playGame`: Simulates one game
+* `playGames`: Simulates multiple games
 
-However, finding the probability that a given player is the loser is much more difficult. The first-step analysis could involve many more intermediate states and generate many equations.
+`visualiser.ipynb`:
+| Function | Description | x-axis | y-axis | Sample |
+| --- | --- | --- | --- | --- |
+| `plotXforFixedYZ` | Plots $L_{(x,y,z)}$ for varying x within a range, fixed y and z | x | $L_{(x,y,z)}$ | `game*_hitting_probs (x = 1-1000, y = 100, z = 200, t = 10, varyX_memoised).png` | 
+| `plotFixedSum` | Visualises $L_{(x,y,z)}$'s for fixed sum $x+y+z = N$ | y | z | `game*_fixed_sum_N=2000_t=30.png` |
 
-Thus, this Python program serves to find the exact probability (as a fraction) that Player 1 is the loser of the game, for any initial state $(x, y, z)$.
 
-<h2>Main files</h2>
-
-`loser_analysis.ipynb`: The main notebook which includes
-* the `LoserAnalysis` class: represents the first step analysis of the hitting probability from the provided initial state to a state where loser = Player 1.
-* the `exportStateProbs` function: generates the hitting probabilities from all initial states within a certain range, and exports the information to a CSV file with columns (Initial state, P(Loser = Player 1)).
-
-`BettingGameSimulation.ipynb`: An additional notebook featuring the `simGame` function, which simulates the game for a specified number of times, and outputs a summary of the game statistics.<br>
-This file could be used to generate numerical approximations to $P(\text{Loser} = \text{Player 1})$, and as a sanity check for the exact solutions generated in `LoserAnalysis.ipynb`.
+<h2>Data files</h2>
 
 `578Equations.txt`: Sample text file illustrating what is created by the `exportEqns` method in the `LoserAnalysis` class.<br>
 
