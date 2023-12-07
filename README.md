@@ -19,7 +19,7 @@ Thus, this Python program serves to find the exact probability (as a fraction) t
 
 <h2>Main files</h2>
 
-`LoserAnalysis.ipynb`: The main notebook which includes
+`loser_analysis.ipynb`: The main notebook which includes
 * the `LoserAnalysis` class: represents the first step analysis of the hitting probability from the provided initial state to a state where loser = Player 1.
 * the `exportStateProbs` function: generates the hitting probabilities from all initial states within a certain range, and exports the information to a CSV file with columns (Initial state, P(Loser = Player 1)).
 
