@@ -4,7 +4,7 @@
 
 A betting game involves 3 players, that start the game with amounts of money $x, $y, $z (all > 0) respectively. 
 
-Let the fortunes at time $n$ (i.e. after $n$ rounds) of the 3 players be $X_n, Y_n, Z_n$ respectively (so $X_0 = x, Y_0 = y, Z_0 = z$), and model this as a Markov chain.
+Let the fortunes at time $n$ (i.e. after $n$ rounds) of the 3 players be $X_n, Y_n, Z_n$ respectively (so $X_0 = x, Y_0 = y, Z_0 = z$), and model $(X_n, Y_n, Z_n)$ as a Markov chain.
 
 At each round of the game:
 
@@ -34,32 +34,32 @@ This Python program does exactly this -- it finds the exact probability (as a fr
 <h2>Repo structure<h2>
 
 .
-|-- loser-analysis.ipynb
-|-- simulation.ipynb
-|-- visualiser.ipynb
-|-- game1_two_players
-|   |-- game1_global.ipynb
-|   |-- game1_demo.ipynb
-|   |-- game1_loser_analysis.ipynb
-|   |-- game1_hitting_probs_generator.ipynb
-|   |-- game1_better_giving_1.ipynb
-|   |-- game1_memoisation.ipynb
-|   |-- game1_visualisation.ipynb
-|   |-- data
-|   |   |-- game1_demo_(5,7,8)_equations.txt
-|   |   |-- game1_demo_probs_1-10.csv
-|   |   |-- game1_exact_hitting_probs.csv
-|   |   |-- game1_float_hitting_probs.csv
-|   |   |-- game1_better_giving_1_stricter_1-100.csv
-|   |   |-- ...
-|   |
-|   |-- visualisation
-|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX).png
-|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX_memoised).png
-|   |   |-- game1_fixed_sum_N=2000_t=30.png
-|
-|-- game2_three_players
-|   |-- ...
+|-- loser-analysis.ipynb<br>
+|-- simulation.ipynb<br>
+|-- visualiser.ipynb<br>
+|-- game1_two_players<br>
+|   |-- game1_global.ipynb<br>
+|   |-- game1_demo.ipynb<br>
+|   |-- game1_loser_analysis.ipynb<br>
+|   |-- game1_hitting_probs_generator.ipynb<br>
+|   |-- game1_better_giving_1.ipynb<br>
+|   |-- game1_memoisation.ipynb<br>
+|   |-- game1_visualisation.ipynb<br>
+|   |-- data<br>
+|   |   |-- game1_demo_(5,7,8)_equations.txt<br>
+|   |   |-- game1_demo_probs_1-10.csv<br>
+|   |   |-- game1_exact_hitting_probs.csv<br>
+|   |   |-- game1_float_hitting_probs.csv<br>
+|   |   |-- game1_better_giving_1_stricter_1-100.csv<br>
+|   |   |-- ...<br>
+|   |<br>
+|   |-- visualisation<br>
+|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX).png<br>
+|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX_memoised).png<br>
+|   |   |-- game1_fixed_sum_N=2000_t=30.png<br>
+|<br>
+|-- game2_three_players<br>
+|   |-- ...<br>
 
 ... `./game2_three_players` follow the same structure as `game1_two_players`
 
@@ -88,12 +88,6 @@ Main functions:
 | `plotXforFixedYZ` | Plots $L_{(x,y,z)}$ for varying x within a range, fixed y and z | x | $L_{(x,y,z)}$ | `game*_hitting_probs (x = 1-1000, y = 100, z = 200, t = 10, varyX_memoised).png` | 
 | `plotFixedSum` | Visualises $L_{(x,y,z)}$'s for fixed sum $x+y+z = N$ | y | z | `game*_fixed_sum_N=2000_t=30.png` |
 
-
-<h2>Data files</h2>
-
-`578Equations.txt`: Sample text file illustrating what is created by the `exportEqns` method in the `LoserAnalysis` class.<br>
-
-`Player1LoseProbs_1to5.csv`: Sample CSV file illustrating what is created by the `exportStateProbs` function.
 
 <h2>Running the program</h2>
 
