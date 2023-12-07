@@ -33,7 +33,7 @@ This Python program does exactly this -- it finds the exact probability (as a fr
 
 <h2>Repo structure<h2>
 
-.
+<code>.<br>
 |-- loser-analysis.ipynb<br>
 |-- simulation.ipynb<br>
 |-- visualiser.ipynb<br>
@@ -60,8 +60,9 @@ This Python program does exactly this -- it finds the exact probability (as a fr
 |<br>
 |-- game2_three_players<br>
 |   |-- ...<br>
+</code>
 
-... `./game2_three_players` follow the same structure as `game1_two_players`
+... `./game2_three_players` follow the same structure as `game1_two_players`.
 
 <h2>Programs</h2>
 
@@ -89,18 +90,18 @@ Main functions:
 | `plotFixedSum` | Visualises $L_{(x,y,z)}$'s for fixed sum $x+y+z = N$ | y | z | `game*_fixed_sum_N=2000_t=30.png` |
 
 
-<h2>Running the program</h2>
+<h2>Running the programs</h2>
 
 a) From <b>Jupyter Notebook</b>: 
 
 Simply click `Kernel > Restart & Run All` to run all cells.<br>
-Then append any necessary function calls to attain the desired hitting probability.
+Or, run the `%run` and `import` cells at the top of the program, then append any necessary function calls to attain the desired effect.
 
 b) From <b>Terminal</b>:
 
-1. Run `jupyter nbconvert --execute LoserAnalysis --to python`.<br>
-This converts the notebook `LoserAnalysis.ipynb` to a Python file, `LoserAnalysis.py`.
+1. Run `jupyter nbconvert --execute <notebook_name> --to python`.<br>
+This converts the specified notebook to a Python file, `<notebook_name>.py`.
 2. Open the file and add in any necessary function calls.<br>
-Alternatively, run `nano LoserAnalysis.py` to edit the file and append any necessary function calls.
-3. Run `python LoserAnalysis.py` to execute the program.<br>
-You may wish to run the specific command for your Python version, e.g. `python3.10 LoserAnalysis.py`.
+Alternatively, run `nano <notebook_name>.py` to edit the file and append any necessary function calls.
+3. Run `python <notebook_name>.py` to execute the program.<br>
+You may wish to run the specific command for your Python version, e.g. `python3.10 <notebook_name>.py`.
