@@ -21,7 +21,7 @@ The first player to reach $0 in this game is called the <i>loser</i>.
 
 After a loser has been determined the remaining two players continue until one of those two players has all the money. The player with all of the money at the end is called the <i>winner</i>.
 
-Given initial state $(x, y, z)$, denote: 
+<br>Given initial state $(x, y, z)$, denote: 
 * $L_{(x,y,z)}$: probability that player 1 loses
 * $W_{(x,y,z)}$: probability that player 1 wins.
 
@@ -81,13 +81,13 @@ The child directories, corresponding to each game, contains the logic specific t
 `loser_analysis.ipynb`:
 The main `LoserAnalysis` class represents the first-step analysis, given an initial state.
 
-| Function/method | Functionality | Demo/sample results | <div style="width:290px">Notes</div> |
+| Function/method | Functionality | Demo/sample results | <div style="width:400px">Notes</div> |
 | --- | --- | --- | ------------- |
 | `getHittingProb` (`LoserAnalysis`) | Calculate the exact $L_{(x,y,z)}$ in fraction form | `game*_demo_probs_1-10.csv` | Also allows to approximate $L_{(x,y,z)}$, using memoisation + enumeration of all possible games up to a fixed number of rounds (faster method) |
 `getEquations`, `exportEqns` (`LoserAnalysis`) | Generate and export the $L_{(x,y,z)}$ equations | `game*_demo_(5,7,8)_equations.txt` |
 | `exportStateProbs` | Generate and export the $L_{(x,y,z)}$'s from all initial states within a certain range | `game*_exact_hitting_probs.csv` | CSV with format: (Initial state, $L_{(x,y,z)}$) |
-| `findBetterGiving1` | Finds the initial states where player 1 is better off giving away $1, using approximate $L_{(x,y,z)}$'s | <ul><li>`game1_better_giving_1_memo_1-100.csv`</li><li>`game1_better_giving_1_to_another_memo_1-100.csv`</li></ul> | Has the option to find when player 1 is better off giving away $1 **to another player** |
-| `stricterFilter` | Ditto, but using exact $L_{(x,y,z)}$'s or more accurate approximations | <ul><li>`game1_better_giving_1_stricter_1-100.csv`</li><li>`game1_better_giving_1_to_another_stricter_1-100.csv`</li></ul>  | Ditto |
+| `findBetterGiving1` | Finds the initial states where player 1 is better off giving away $1, using approximate $L_{(x,y,z)}$'s | <ul><li>`game*_better_giving_1_memo_1-100.csv`</li><li>`game*_better_giving_1_to_another_memo_1-100.csv`</li></ul> | <ul><li>Has the option to find when player 1 is better off giving away $1 **to another player**</li><li>By default, the approximation uses `t=30` (time steps) |
+| `stricterFilter` | <ul><li>Ditto, but using exact $L_{(x,y,z)}$'s or more accurate approximations.</li><li>Usually applied to a narrower search space (e.g. the result of `findBetterGiving1`).</li></ul> | <ul><li>`game1_better_giving_1_stricter_1-100.csv`</li><li>`game1_better_giving_1_to_another_stricter_1-100.csv`</li></ul>  | <ul><li>Ditto</li><li>By default, `t=40` if approximation is used</li></ul>|
 
 `simulation.ipynb`:
 Provides numerical approximation. Used as a sanity check of the first-step analyses' results.
@@ -101,6 +101,8 @@ Main functions:
 | --- | --- | --- | --- | --- |
 | `plotXforFixedYZ` | Plots $L_{(x,y,z)}$ for varying x within a range, fixed y and z | x | $L_{(x,y,z)}$ | `game*_hitting_probs (x = 1-1000, y = 100, z = 200, t = 10, varyX_memoised).png` | 
 | `plotFixedSum` | Visualises $L_{(x,y,z)}$'s for fixed sum $x+y+z = N$ | y | z | `game*_fixed_sum_N=2000_t=30.png` |
+
+`*` means either 1 or 2.
 
 
 <h2>Running the programs</h2>
