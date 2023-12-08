@@ -1,37 +1,37 @@
 # 3-person-betting-game
 
-These models are studied by Profs. Omer Angel and Mark Holmes, in the (unpublished) paper '“All In” poker sequences'.
+<i>Note: These models are studied by Profs. Omer Angel and Mark Holmes, in the (unpublished) paper '“All In” poker sequences'.</i>
 
 <h2>Game description</h2>
 
-A betting game involves 3 players, that start the game with amounts of money $x, $y, $z (all > 0) respectively. 
+A betting game involves 3 players, that start the game with amounts of money $ $x$, $ $y$, $ $z$ (all > 0) respectively. 
 
 Let the fortunes at time $n$ (i.e. after $n$ rounds) of the 3 players be $X_n, Y_n, Z_n$ respectively (so $X_0 = x, Y_0 = y, Z_0 = z$), and model $(X_n, Y_n, Z_n)$ as a Markov chain.
 
 At each round of the game:
 
 * **Game 1**: One player (the <i>giver</i>) is chosen uniformly at random to give some money to one of the other players (the <i>receiver</i>) chosen uniformly at random (independent of previous rounds).<br> 
-If these two chosen players had $V and $W at the beginning of the round, then the giver must give the receiver $ $\min (V, W)$.
+If these two chosen players had $ $V$ and $ $W$ at the beginning of the round, then the giver must give the receiver $ $\min (V, W)$.
 * **Game 2**: one player is chosen uniformly at random as the receiver. All other players give $ $\min (X, Y, Z)$ to the receiver.
 
 And the round ends.
 
 The first player to reach $0 in this game is called the <i>loser</i>. 
-* Game 2: If two players are eliminated at the same time, then we toss a fair coin to determine who is the loser.
+* **Game 2**: If two players are eliminated at the same time, then we toss a fair coin to determine who is the loser.
 
 After a loser has been determined the remaining two players continue until one of those two players has all the money. The player with all of the money at the end is called the <i>winner</i>.
 
 Given initial state $(x, y, z)$, denote: 
-* $L_{(x,y,z)}: probability that player 1 loses
-* W_{(x,y,z)}: probability that player 1 wins.
+* $L_{(x,y,z)}$: probability that player 1 loses
+* $W_{(x,y,z)}$: probability that player 1 wins.
 
-<h2>Problem</h2>
+<h2>Problem specification</h2>
 
 Finding the probability that a given player wins is simple. For example, the probability that Player 1 wins is just $\frac {x} {x+y+z}$.
 
 However, finding the probability that a given player is the loser is much more difficult. The first-step analysis could involve many more intermediate states and generate many equations, making the analysis intractable to calculate by hand.
 
-This Python program does exactly this -- it finds the exact probability (as a fraction) that Player 1 is the loser of the game, for any initial state $(x, y, z)$.
+This Python program does exactly this -- it finds the exact probability (as a fraction) that Player 1 is the loser of the game, for any initial state $(x, y, z)$. It also supports some further analysis based on the probabilities attained.
 
 
 <h2>Repo structure</h2>
@@ -81,8 +81,8 @@ The child directories, corresponding to each game, contains the logic specific t
 `loser_analysis.ipynb`:
 The main `LoserAnalysis` class represents the first-step analysis, given an initial state.
 
-| Function/method | Functionality | Demo/sample results | Notes |
-| --- | --- | --- | --- |
+| Function/method | Functionality | Demo/sample results | <div style="width:290px">Notes</div> |
+| --- | --- | --- | ------------- |
 | `getHittingProb` (`LoserAnalysis`) | Calculate the exact $L_{(x,y,z)}$ in fraction form | `game*_demo_probs_1-10.csv` | Also allows to approximate $L_{(x,y,z)}$, using memoisation + enumeration of all possible games up to a fixed number of rounds (faster method) |
 `getEquations`, `exportEqns` (`LoserAnalysis`) | Generate and export the $L_{(x,y,z)}$ equations | `game*_demo_(5,7,8)_equations.txt` |
 | `exportStateProbs` | Generate and export the $L_{(x,y,z)}$'s from all initial states within a certain range | `game*_exact_hitting_probs.csv` | CSV with format: (Initial state, $L_{(x,y,z)}$) |
