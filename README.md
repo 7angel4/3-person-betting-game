@@ -2,7 +2,7 @@
 
 <i>Note: These models are studied by Profs. Omer Angel and Mark Holmes, in the (unpublished) paper '“All In” poker sequences'.</i>
 
-For any questions/comments, please contact: angelh1@student.unimelb.edu.au
+For any questions/comments, please contact: angelh1@student.unimelb.edu.au.
 
 <h2>Game description</h2>
 
