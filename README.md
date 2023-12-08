@@ -1,5 +1,7 @@
 # 3-person-betting-game
 
+These models are studied by Profs. Omer Angel and Mark Holmes, in the (unpublished) paper '“All In” poker sequences'.
+
 <h2>Game description</h2>
 
 A betting game involves 3 players, that start the game with amounts of money $x, $y, $z (all > 0) respectively. 
@@ -32,7 +34,7 @@ However, finding the probability that a given player is the loser is much more d
 This Python program does exactly this -- it finds the exact probability (as a fraction) that Player 1 is the loser of the game, for any initial state $(x, y, z)$.
 
 
-<h2>Repo structure<h2>
+<h2>Repo structure</h2>
 
 The parent directory contains files which hold the main logic:
 * performing first-step analysis
@@ -42,33 +44,33 @@ The parent directory contains files which hold the main logic:
 The child directories, corresponding to each game, contains the logic specific to that game, and any sample results or visualisations.
 
 
-<pre>.<br>
-|-- loser-analysis.ipynb<br>
-|-- simulation.ipynb<br>
-|-- visualiser.ipynb<br>
-|-- game1_two_players<br>
-|   |-- game1_global.ipynb<br>
-|   |-- game1_demo.ipynb<br>
-|   |-- game1_loser_analysis.ipynb<br>
-|   |-- game1_hitting_probs_generator.ipynb<br>
-|   |-- game1_better_giving_1.ipynb<br>
-|   |-- game1_memoisation.ipynb<br>
-|   |-- game1_visualisation.ipynb<br>
-|   |-- data<br>
-|   |   |-- game1_demo_(5,7,8)_equations.txt<br>
-|   |   |-- game1_demo_probs_1-10.csv<br>
-|   |   |-- game1_exact_hitting_probs.csv<br>
-|   |   |-- game1_float_hitting_probs.csv<br>
-|   |   |-- game1_better_giving_1_stricter_1-100.csv<br>
-|   |   |-- ...<br>
-|   |<br>
-|   |-- visualisation<br>
-|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX).png<br>
-|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX_memoised).png<br>
-|   |   |-- game1_fixed_sum_N=2000_t=30.png<br>
-|<br>
-|-- game2_three_players<br>
-|   |-- ...<br>
+<pre>.
+|-- loser-analysis.ipynb
+|-- simulation.ipynb
+|-- visualiser.ipynb
+|-- game1_two_players
+|   |-- game1_global.ipynb
+|   |-- game1_demo.ipynb
+|   |-- game1_loser_analysis.ipynb
+|   |-- game1_hitting_probs_generator.ipynb
+|   |-- game1_better_giving_1.ipynb
+|   |-- game1_memoisation.ipynb
+|   |-- game1_visualisation.ipynb
+|   |-- data
+|   |   |-- game1_demo_(5,7,8)_equations.txt
+|   |   |-- game1_demo_probs_1-10.csv
+|   |   |-- game1_exact_hitting_probs.csv
+|   |   |-- game1_float_hitting_probs.csv
+|   |   |-- game1_better_giving_1_stricter_1-100.csv
+|   |   |-- ...
+|   |
+|   |-- visualisation
+|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX).png
+|   |   |-- game1_hitting_probs (x = 1-300, y = 100, z = 200, t = 30, varyX_memoised).png
+|   |   |-- game1_fixed_sum_N=2000_t=30.png
+|
+|-- game2_three_players
+|   |-- ...
 </pre>
 
 ... `./game2_three_players` follow the same structure as `game1_two_players`.
