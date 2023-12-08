@@ -2,6 +2,8 @@
 
 <i>Note: These models are studied by Profs. Omer Angel and Mark Holmes, in the (unpublished) paper '“All In” poker sequences'.</i>
 
+For any questions/comments, please contact: angelh1@student.unimelb.edu.au
+
 <h2>Game description</h2>
 
 A betting game involves 3 players, that start the game with amounts of money $ $x$, $ $y$, $ $z$ (all > 0) respectively. 
