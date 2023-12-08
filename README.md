@@ -81,8 +81,8 @@ The child directories, corresponding to each game, contains the logic specific t
 `loser_analysis.ipynb`:
 The main `LoserAnalysis` class represents the first-step analysis, given an initial state.
 
-| Function/method | Functionality | Demo/sample results | <div style="width:400px">Notes</div> |
-| --- | --- | --- | ------------- |
+| Function/method | Functionality | Demo/sample results | <div style="width:700px">Notes</div> |
+| --- | --- | --- | ---- |
 | `getHittingProb` (`LoserAnalysis`) | Calculate the exact $L_{(x,y,z)}$ in fraction form | `game*_demo_probs_1-10.csv` | Also allows to approximate $L_{(x,y,z)}$, using memoisation + enumeration of all possible games up to a fixed number of rounds (faster method) |
 `getEquations`, `exportEqns` (`LoserAnalysis`) | Generate and export the $L_{(x,y,z)}$ equations | `game*_demo_(5,7,8)_equations.txt` |
 | `exportStateProbs` | Generate and export the $L_{(x,y,z)}$'s from all initial states within a certain range | `game*_exact_hitting_probs.csv` | CSV with format: (Initial state, $L_{(x,y,z)}$) |
